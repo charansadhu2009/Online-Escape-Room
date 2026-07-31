@@ -118,3 +118,32 @@ font-size:22px;
 color:gold;
 
 }
+/* Inventory */
+
+.inventory{
+
+margin-top:40px;
+
+background:#222;
+
+padding:20px;
+
+border-radius:10px;
+
+}
+
+.inventory h2{
+
+margin-bottom:15px;
+
+color:gold;
+
+}
+
+#inventory{
+
+font-size:22px;
+
+color:white;
+
+}
