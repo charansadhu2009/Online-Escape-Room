@@ -78,8 +78,7 @@ const timer = setInterval(() => {
     if (seconds === 0) {
         if (minutes === 0) {
             clearInterval(timer);
-            alert("⏰ Time's Up! Game Over");
-           localStorage.setItem("room", "2");
+           window.location.href="gameover.html";
             return;
         }
 
