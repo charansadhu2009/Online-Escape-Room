@@ -118,3 +118,33 @@ document.addEventListener("mousemove", (e) => {
     light.style.top = (e.clientY - 90) + "px";
 
 });
+
+// =====================
+// Sounds
+// =====================
+
+const bgMusic = document.getElementById("bgMusic");
+const clickSound = document.getElementById("clickSound");
+const unlockSound = document.getElementById("unlockSound");
+
+// Start background music after first click
+document.body.addEventListener("click", () => {
+    if (bgMusic.paused) {
+        bgMusic.volume = 0.3;
+        bgMusic.play();
+    }
+}, { once: true });
+
+// Play click sound on every object
+document.querySelectorAll(".object").forEach(obj => {
+    obj.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    });
+});
+
+// Play unlock sound
+document.getElementById("unlockBtn").addEventListener("click", () => {
+    unlockSound.currentTime = 0;
+    unlockSound.play();
+});
