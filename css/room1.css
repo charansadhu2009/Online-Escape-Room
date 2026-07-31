@@ -224,3 +224,22 @@ transform:translate(-50%,-50%);
 z-index:999;
 
 }
+.object {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.object:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px gold;
+}
+#flashlight {
+    position: fixed;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle,
+        rgba(255,255,255,0.2) 0%,
+        rgba(0,0,0,0.9) 70%);
+}
