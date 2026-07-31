@@ -149,16 +149,40 @@ No items collected
 </div>
 
 <button id="pauseBtn">⏸ Pause</button>
-</body>
-</html>
-<div class="progress">
+  <button id="settingsBtn">⚙️ Settings</button>
 
-<h2>📋 Puzzle Progress</h2>
+<div id="settingsMenu" class="settings-menu">
 
-<p id="progress">
+<h2>Game Settings</h2>
 
-0 / 4 Clues Found
+<label>
+<input type="checkbox" id="musicToggle" checked>
+ Background Music
+</label>
 
-</p>
+<br><br>
+
+<label>
+<input type="checkbox" id="soundToggle" checked>
+ Sound Effects
+</label>
+
+<br><br>
+
+<button id="closeSettings">
+Close
+</button>
 
 </div>
+ 
+
+
+
+<div class="progress">
+    <h2>📋 Puzzle Progress</h2>
+    <p id="progress">0 / 4 Clues Found</p>
+</div>
+
+
+</body>
+</html>
