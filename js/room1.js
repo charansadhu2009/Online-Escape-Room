@@ -59,3 +59,50 @@ document.getElementById("unlockBtn").onclick = () => {
     }
 
 };
+// =====================
+// Countdown Timer
+// =====================
+
+let minutes = 15;
+let seconds = 0;
+
+const timer = setInterval(() => {
+
+    if (seconds === 0) {
+        if (minutes === 0) {
+            clearInterval(timer);
+            alert("⏰ Time's Up! Game Over");
+            window.location.href = "index.html";
+            return;
+        }
+
+        minutes--;
+        seconds = 59;
+    } else {
+        seconds--;
+    }
+
+    let m = minutes.toString().padStart(2, "0");
+    let s = seconds.toString().padStart(2, "0");
+
+    document.getElementById("time").textContent = `${m}:${s}`;
+
+}, 1000);
+
+// =====================
+// Hint System
+// =====================
+
+document.getElementById("hintBtn").onclick = () => {
+
+    if (!keyFound) {
+
+        showMessage("💡 Hint: Search inside the locker.");
+
+    } else {
+
+        showMessage("💡 Hint: The clock shows the password.");
+
+    }
+
+};
