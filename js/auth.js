@@ -28,6 +28,19 @@ window.location="login.html";
 
 // Login
 
+const playerName =
+document.getElementById("playerName").value.trim();
+
+if(playerName===""){
+
+alert("Please enter your name.");
+
+return;
+
+}
+
+localStorage.setItem("playerName",playerName);
+
 const loginForm=document.getElementById("loginForm");
 
 if(loginForm){
