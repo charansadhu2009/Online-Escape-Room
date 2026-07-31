@@ -1,4 +1,11 @@
 let score = 1000;
+
+// Load saved score
+const savedScore = localStorage.getItem("score");
+
+if (savedScore) {
+    score = parseInt(savedScore);
+}
 let keyFound = false;
 
 const message = document.getElementById("message");
@@ -26,7 +33,7 @@ document.getElementById("locker").onclick = () => {
         keyFound = true;
         inventory.innerHTML = "Golden Key 🔑";
         score += 100;
-        document.getElementById("score").innerHTML = score;
+     localStorage.setItem("score", score);
         showMessage("You found a Golden Key!");
     } else {
         showMessage("Locker is empty.");
@@ -72,7 +79,7 @@ const timer = setInterval(() => {
         if (minutes === 0) {
             clearInterval(timer);
             alert("⏰ Time's Up! Game Over");
-            window.location.href = "index.html";
+           localStorage.setItem("room", "2");
             return;
         }
 
