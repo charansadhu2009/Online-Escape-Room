@@ -361,3 +361,16 @@ clues=parseInt(savedClues);
 updateProgress();
 
 }
+// Hover message
+
+const objects=document.querySelectorAll(".object");
+
+objects.forEach(function(item){
+
+item.addEventListener("mouseenter",function(){
+
+message.innerHTML="Inspect the "+item.id;
+
+});
+
+});
