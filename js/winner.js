@@ -21,10 +21,6 @@ window.location.href="index.html";
 
 function downloadCertificate(){
 
-alert(
-"🏆 Congratulations " +
-player +
-"! Your Escape Room Certificate is ready."
-);
+window.location.href="certificate.html";
 
 }
