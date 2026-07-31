@@ -2,7 +2,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -11,7 +11,65 @@ background:#111;
 
 color:white;
 
-height:100vh;
+}
+
+.game-container{
+
+width:1200px;
+
+margin:20px auto;
+
+}
+
+h1{
+
+text-align:center;
+
+margin:20px 0;
+
+font-size:40px;
+
+}
+
+.hud{
+
+display:flex;
+
+justify-content:space-between;
+
+background:#222;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+font-size:20px;
+
+}
+
+.escape-room{
+
+position:relative;
+
+height:650px;
+
+background:linear-gradient(#555,#333);
+
+border:10px solid #444;
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+/* OBJECTS */
+
+.object{
+
+position:absolute;
 
 display:flex;
 
@@ -19,75 +77,79 @@ justify-content:center;
 
 align-items:center;
 
-}
-
-.room{
-
-width:1000px;
-
-text-align:center;
-
-}
-
-.room h1{
+flex-direction:column;
 
 font-size:50px;
-
-margin-bottom:40px;
-
-}
-
-.objects{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:40px;
-
-margin-bottom:40px;
-
-}
-
-.item{
-
-background:#222;
-
-padding:30px;
-
-border-radius:10px;
 
 cursor:pointer;
 
 transition:.3s;
 
-font-size:50px;
+}
+
+.object:hover{
+
+transform:scale(1.08);
+
+filter:drop-shadow(0 0 15px yellow);
 
 }
 
-.item:hover{
+.table{
 
-background:#444;
+left:120px;
 
-transform:scale(1.05);
-
-}
-
-.item p{
-
-font-size:18px;
-
-margin-top:15px;
+top:360px;
 
 }
 
-.passwordBox{
+.clock{
 
-margin-top:20px;
+left:530px;
+
+top:60px;
 
 }
 
-input{
+.locker{
+
+right:120px;
+
+top:260px;
+
+}
+
+.window{
+
+left:860px;
+
+top:70px;
+
+}
+
+.door{
+
+left:500px;
+
+bottom:20px;
+
+}
+
+.panel{
+
+margin-top:25px;
+
+text-align:center;
+
+background:#222;
+
+padding:20px;
+
+border-radius:10px;
+
+}
+
+.panel input{
 
 padding:15px;
 
@@ -97,32 +159,33 @@ font-size:18px;
 
 }
 
-button{
+.panel button{
 
 padding:15px 25px;
 
 font-size:18px;
 
-cursor:pointer;
+margin:10px;
 
-margin-left:10px;
+cursor:pointer;
 
 }
 
 #message{
 
-margin-top:30px;
+margin-top:20px;
 
 font-size:22px;
 
 color:gold;
 
+min-height:40px;
+
 }
-/* Inventory */
 
-.inventory{
+.inventory,.progress{
 
-margin-top:40px;
+margin-top:25px;
 
 background:#222;
 
@@ -132,189 +195,13 @@ border-radius:10px;
 
 }
 
-.inventory h2{
+.inventory h2,.progress h2{
 
-margin-bottom:15px;
-
-color:gold;
-
-}
-
-#inventory{
-
-font-size:22px;
-
-color:white;
-// ---------------------
-// TIMER
-// ---------------------
-
-let totalTime = 900;
-
-const timer = setInterval(function(){
-
-let minutes = Math.floor(totalTime/60);
-
-let seconds = totalTime%60;
-
-if(seconds<10){
-
-seconds="0"+seconds;
-
-}
-
-document.getElementById("time").innerHTML=
-minutes+":"+seconds;
-
-totalTime--;
-
-if(totalTime<0){
-
-clearInterval(timer);
-
-alert("⏰ Time Up!");
-
-location.reload();
-
-}
-
-},1000);
-
-// ---------------------
-// SCORE
-// ---------------------
-
-let score=1000;
-
-function updateScore(){
-
-document.getElementById("score").innerHTML=score;
-
-}
-
-// ---------------------
-// HINT SYSTEM
-// ---------------------
-
-let hints=3;
-
-document.getElementById("hintBtn").onclick=function(){
-
-if(hints==3){
-
-alert("💡 Hint 1\nCheck the table carefully.");
-
-score-=50;
-
-}
-
-else if(hints==2){
-
-alert("💡 Hint 2\nThe locker hides something useful.");
-
-score-=50;
-
-}
-
-else if(hints==1){
-
-alert("💡 Hint 3\nCombine every clue before opening the door.");
-
-score-=50;
-
-}
-
-else{
-
-alert("No hints remaining.");
-
-return;
-
-}
-
-.gameInfo{
-
-margin-top:30px;
-
-display:flex;
-
-justify-content:space-around;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:20px;
-
-}
-
-.timerBox,
-.scoreBox{
-
-background:#222;
-
-padding:15px 30px;
-
-border-radius:10px;
-
-font-size:24px;
+margin-bottom:10px;
 
 color:gold;
 
 }
-
-#hintBtn{
-
-padding:15px 30px;
-
-background:#ff9800;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-cursor:pointer;
-
-font-size:18px;
-
-transition:.3s;
-
-}
-
-#hintBtn:hover{
-
-background:#ff5722;
-
-}
-.progress{
-
-margin-top:30px;
-
-background:#222;
-
-padding:20px;
-
-border-radius:10px;
-
-}
-
-.progress h2{
-
-color:gold;
-
-margin-bottom:15px;
-
-}
-
-#progress{
-
-font-size:22px;
-
-}
-
-/* Flashlight */
 
 #flashlight{
 
@@ -329,223 +216,11 @@ border-radius:50%;
 pointer-events:none;
 
 background:radial-gradient(circle,
-rgba(255,255,255,.18),
+rgba(255,255,255,.15),
 rgba(0,0,0,0));
 
 transform:translate(-50%,-50%);
 
 z-index:999;
-
-}
-
-/* Shake Animation */
-
-@keyframes shake{
-
-0%{transform:translateX(0);}
-20%{transform:translateX(-8px);}
-40%{transform:translateX(8px);}
-60%{transform:translateX(-8px);}
-80%{transform:translateX(8px);}
-100%{transform:translateX(0);}
-
-}
-
-.shake{
-
-animation:shake .5s;
-
-}
-
-/* Door Open */
-
-.door-open{
-
-background:green !important;
-
-transition:1s;
-
-}
-.game-container{
-
-width:1200px;
-
-margin:auto;
-
-padding:20px;
-
-}
-
-.hud{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-bottom:20px;
-
-font-size:22px;
-
-background:#1d1d1d;
-
-padding:15px;
-
-border-radius:10px;
-
-}
-
-.escape-room{
-
-position:relative;
-
-height:650px;
-
-background:#333;
-
-border:8px solid #777;
-
-border-radius:20px;
-
-overflow:hidden;
-
-}
-
-.object{
-
-position:absolute;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
-
-border-radius:10px;
-
-}
-
-.object:hover{
-
-transform:scale(1.05);
-
-box-shadow:0 0 20px gold;
-
-}
-
-.table{
-
-width:180px;
-
-height:90px;
-
-background:#8B4513;
-
-left:120px;
-
-top:300px;
-
-}
-
-.clock{
-
-width:80px;
-
-height:80px;
-
-background:white;
-
-color:black;
-
-border-radius:50%;
-
-left:530px;
-
-top:40px;
-
-}
-
-.locker{
-
-width:140px;
-
-height:220px;
-
-background:#666;
-
-right:80px;
-
-top:170px;
-
-}
-
-.window{
-
-width:180px;
-
-height:120px;
-
-background:skyblue;
-
-left:900px;
-
-top:40px;
-
-}
-
-.door{
-
-width:150px;
-
-height:300px;
-
-background:#552200;
-
-left:500px;
-
-bottom:0;
-
-}
-
-.panel{
-
-margin-top:25px;
-
-background:#222;
-
-padding:25px;
-
-border-radius:12px;
-
-text-align:center;
-
-}
-
-.panel input{
-
-padding:15px;
-
-width:300px;
-
-font-size:18px;
-
-margin:20px;
-
-}
-
-.panel button{
-
-padding:15px 30px;
-
-margin:10px;
-
-font-size:18px;
-
-cursor:pointer;
 
 }
