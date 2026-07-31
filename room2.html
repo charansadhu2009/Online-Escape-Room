@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Room 2 - Haunted Library</title>
@@ -17,69 +14,63 @@
 
 <div class="game">
 
-<h1>📚 ROOM 2</h1>
+<div class="hud">
 
-<h2>The Haunted Library</h2>
+<div id="playerName">👤 Guest</div>
 
-<p>
+<div>⭐ <span id="score">0</span></div>
 
-Find every hidden clue before the ghost catches you.
+<div>🎒 <span id="inventory">Empty</span></div>
+
+</div>
+
+<h1>📚 Haunted Library</h1>
+
+<p id="message">
+
+Find all clues before escaping.
 
 </p>
 
 <div class="library">
 
 <div class="object" id="bookshelf">
-
 📚
-
 <p>Bookshelf</p>
-
 </div>
 
 <div class="object" id="painting">
-
 🖼️
-
 <p>Painting</p>
-
 </div>
 
 <div class="object" id="desk">
-
 🪑
-
 <p>Desk</p>
-
 </div>
 
-<div class="object" id="ghost">
-
-👻
-
-<p>Ghost</p>
-
+<div class="object" id="safe">
+🔐
+<p>Safe</p>
 </div>
 
+<div class="object" id="door">
+🚪
+<p>Exit Door</p>
 </div>
-
-<div id="message">
-
-Search the room...
 
 </div>
 
 <input
-
 type="text"
-
 id="answer"
+placeholder="Enter Door Code">
 
-placeholder="Secret Password">
+<br><br>
 
-<button id="unlock">
+<button id="unlockBtn">
 
-Unlock Exit
+Unlock Door
 
 </button>
 
@@ -88,5 +79,4 @@ Unlock Exit
 <script src="js/room2.js"></script>
 
 </body>
-
 </html>
