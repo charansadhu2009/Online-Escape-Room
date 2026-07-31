@@ -74,6 +74,9 @@ let minutes = 15;
 let seconds = 0;
 
 const timer = setInterval(() => {
+    if(paused){
+return;
+}
 
     if (seconds === 0) {
         if (minutes === 0) {
@@ -154,3 +157,44 @@ document.getElementById("unlockBtn").addEventListener("click", () => {
     unlockSound.currentTime = 0;
     unlockSound.play();
 });
+let paused=false;
+
+const pauseMenu=document.getElementById("pauseMenu");
+
+const pauseBtn=document.getElementById("pauseBtn");
+
+pauseBtn.onclick=()=>{
+
+paused=!paused;
+
+if(paused){
+
+pauseMenu.style.display="flex";
+
+}else{
+
+pauseMenu.style.display="none";
+
+}
+
+};
+
+document.getElementById("resumeBtn").onclick=()=>{
+
+paused=false;
+
+pauseMenu.style.display="none";
+
+};
+
+document.getElementById("restartBtn").onclick=()=>{
+
+location.reload();
+
+};
+
+document.getElementById("homeBtn").onclick=()=>{
+
+window.location.href="index.html";
+
+};
