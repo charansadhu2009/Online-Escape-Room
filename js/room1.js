@@ -148,14 +148,22 @@ document.body.addEventListener("click", () => {
 document.querySelectorAll(".object").forEach(obj => {
     obj.addEventListener("click", () => {
         clickSound.currentTime = 0;
-        clickSound.play();
+       if(soundToggle.checked){
+
+clickSound.play();
+
+}
     });
 });
 
 // Play unlock sound
 document.getElementById("unlockBtn").addEventListener("click", () => {
     unlockSound.currentTime = 0;
-    unlockSound.play();
+   if(soundToggle.checked){
+
+unlockSound.play();
+
+}
 });
 let paused=false;
 
@@ -196,5 +204,58 @@ location.reload();
 document.getElementById("homeBtn").onclick=()=>{
 
 window.location.href="index.html";
+
+};
+// =====================
+// Settings Menu
+// =====================
+
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsMenu = document.getElementById("settingsMenu");
+const closeSettings = document.getElementById("closeSettings");
+
+const musicToggle = document.getElementById("musicToggle");
+const soundToggle = document.getElementById("soundToggle");
+
+// Load saved settings
+musicToggle.checked = localStorage.getItem("music") !== "off";
+soundToggle.checked = localStorage.getItem("sound") !== "off";
+
+// Apply music setting
+bgMusic.muted = !musicToggle.checked;
+
+// Open menu
+settingsBtn.onclick = () => {
+
+settingsMenu.style.display = "block";
+
+};
+
+// Close menu
+closeSettings.onclick = () => {
+
+settingsMenu.style.display = "none";
+
+};
+
+// Music ON/OFF
+musicToggle.onchange = () => {
+
+bgMusic.muted = !musicToggle.checked;
+
+localStorage.setItem(
+"music",
+musicToggle.checked ? "on" : "off"
+);
+
+};
+
+// Sound ON/OFF
+soundToggle.onchange = () => {
+
+localStorage.setItem(
+"sound",
+soundToggle.checked ? "on" : "off"
+);
 
 };
