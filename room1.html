@@ -11,47 +11,65 @@
 </head>
 
 <body>
-  
+
 <div id="flashlight"></div>
 
 <div class="game-container">
 
+    <!-- HUD -->
     <div class="hud">
 
-        <div>⏳ <span id="time">15:00</span></div>
+        <div id="playerDisplay">
+            👤 Player
+        </div>
 
-        <div>⭐ <span id="score">1000</span></div>
+        <div>
+            ⏳ <span id="time">15:00</span>
+        </div>
 
-        <div>🎒 <span id="inventory">Empty</span></div>
+        <div>
+            ⭐ <span id="score">1000</span>
+        </div>
+
+        <div>
+            🎒 <span id="inventory">Empty</span>
+        </div>
 
     </div>
 
-    <h1>ESCAPE ROOM</h1>
+    <h1>🏚 ESCAPE ROOM</h1>
 
+    <!-- Room -->
     <div class="escape-room">
 
         <div class="object table" id="table">
-            TABLE
+            🪑
+            <p>Table</p>
         </div>
 
         <div class="object clock" id="clock">
-            CLOCK
+            🕒
+            <p>Clock</p>
         </div>
 
         <div class="object locker" id="locker">
-            LOCKER
+            🗄
+            <p>Locker</p>
         </div>
 
         <div class="object window" id="window">
-            WINDOW
+            🪟
+            <p>Window</p>
         </div>
 
         <div class="object door" id="door">
-            DOOR
+            🚪
+            <p>Door</p>
         </div>
 
     </div>
 
+    <!-- Puzzle Panel -->
     <div class="panel">
 
         <div id="message">
@@ -59,130 +77,122 @@
         </div>
 
         <input
-        type="text"
-        id="answer"
-        placeholder="Door Password">
+            type="text"
+            id="answer"
+            placeholder="Enter Door Password">
+
+        <br><br>
 
         <button id="unlockBtn">
-
-            Unlock Door
-
+            🔓 Unlock Door
         </button>
 
         <button id="hintBtn">
-
-            Hint
-
+            💡 Hint
         </button>
 
     </div>
 
-</div>
-<div id="message"></div>
+    <!-- Progress -->
+    <div class="progress">
 
-<div class="gameInfo">
+        <h2>📋 Puzzle Progress</h2>
 
-<div class="timerBox">
-⏳ Time Left:
-<span id="time">15:00</span>
-</div>
+        <p id="progress">
+            0 / 4 Clues Found
+        </p>
 
-<div class="scoreBox">
-⭐ Score:
-<span id="score">1000</span>
+    </div>
+
 </div>
 
-<button id="hintBtn">
-💡 Hint
+<!-- Pause Button -->
+<button id="pauseBtn">
+⏸ Pause
 </button>
 
-</div>
+<!-- Settings Button -->
+<button id="settingsBtn">
+⚙️ Settings
+</button>
 
-<div class="inventory">
+<!-- Pause Menu -->
+<div id="pauseMenu" class="pause-menu">
 
-<h2>🎒 Inventory</h2>
+    <h1>Game Paused</h1>
 
-<div id="inventory">
-No items collected
-</div>
+    <button id="resumeBtn">
+        ▶ Resume
+    </button>
 
-</div>
+    <button id="restartBtn">
+        🔄 Restart
+    </button>
 
-<div class="inventory">
-
-<h2>🎒 Inventory</h2>
-
-<div id="inventory">
-
-No items collected
-
-</div>
-
-</div>
+    <button id="homeBtn">
+        🏠 Home
+    </button>
 
 </div>
+
+<!-- Settings Menu -->
+<div id="settingsMenu" class="settings-menu">
+
+    <h2>⚙ Game Settings</h2>
+
+    <label>
+        <input
+        type="checkbox"
+        id="musicToggle"
+        checked>
+
+        Background Music
+    </label>
+
+    <br><br>
+
+    <label>
+
+        <input
+        type="checkbox"
+        id="soundToggle"
+        checked>
+
+        Sound Effects
+
+    </label>
+
+    <br><br>
+
+    <button id="closeSettings">
+
+        Close
+
+    </button>
+
+</div>
+
+<!-- Audio -->
 
 <audio id="bgMusic" loop>
+
     <source src="audio/bg.mp3" type="audio/mpeg">
+
 </audio>
 
 <audio id="clickSound">
+
     <source src="audio/click.mp3" type="audio/mpeg">
+
 </audio>
 
 <audio id="unlockSound">
+
     <source src="audio/unlock.mp3" type="audio/mpeg">
+
 </audio>
 
 <script src="js/room1.js"></script>
-
-<div id="pauseMenu" class="pause-menu">
-
-<h1>Game Paused</h1>
-
-<button id="resumeBtn">▶ Resume</button>
-
-<button id="restartBtn">🔄 Restart</button>
-
-<button id="homeBtn">🏠 Home</button>
-
-</div>
-
-<button id="pauseBtn">⏸ Pause</button>
-  <button id="settingsBtn">⚙️ Settings</button>
-
-<div id="settingsMenu" class="settings-menu">
-
-<h2>Game Settings</h2>
-
-<label>
-<input type="checkbox" id="musicToggle" checked>
- Background Music
-</label>
-
-<br><br>
-
-<label>
-<input type="checkbox" id="soundToggle" checked>
- Sound Effects
-</label>
-
-<br><br>
-
-<button id="closeSettings">
-Close
-</button>
-
-</div>
- 
-
-
-
-<div class="progress">
-    <h2>📋 Puzzle Progress</h2>
-    <p id="progress">0 / 4 Clues Found</p>
-</div>
-
 
 </body>
 </html>
