@@ -1,88 +1,162 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
 
 body{
 
 background:#111;
-
 color:white;
-
-font-family:Arial;
-
-text-align:center;
-
-padding:40px;
+overflow-x:hidden;
 
 }
 
 .game{
 
-width:900px;
-
+width:95%;
+max-width:1200px;
 margin:auto;
+padding:20px;
 
 }
 
-.library{
+h1{
 
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:40px;
-
-margin-top:40px;
-
-}
-
-.object{
-
-background:#222;
-
-padding:40px;
-
-cursor:pointer;
-
-border-radius:15px;
-
-transition:.3s;
-
-font-size:55px;
-
-}
-
-.object:hover{
-
-background:#444;
-
-transform:scale(1.05);
+text-align:center;
+font-size:40px;
+margin:20px 0;
+color:#ffd700;
 
 }
 
 #message{
 
-margin:30px;
+text-align:center;
+font-size:20px;
+margin-bottom:30px;
+color:#00e5ff;
 
-font-size:22px;
+}
+
+/* HUD */
+
+.hud{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#222;
+padding:15px;
+border-radius:12px;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+
+}
+
+#playerName{
+
+font-weight:bold;
+color:#00e5ff;
+
+}
+
+#score{
 
 color:gold;
+font-weight:bold;
+
+}
+
+#inventory{
+
+color:#ff9800;
+
+}
+
+/* Library */
+
+.library{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:25px;
+
+}
+
+.object{
+
+background:#242424;
+border:2px solid #444;
+border-radius:15px;
+padding:40px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+font-size:55px;
+
+}
+
+.object p{
+
+font-size:18px;
+margin-top:15px;
+
+}
+
+.object:hover{
+
+transform:scale(1.05);
+background:#333;
+border-color:#ffd700;
 
 }
 
 input{
 
+width:100%;
 padding:15px;
-
-width:300px;
-
 font-size:18px;
+margin-top:30px;
+border:none;
+border-radius:10px;
 
 }
 
 button{
 
+margin-top:20px;
 padding:15px 30px;
-
-margin-left:10px;
-
+font-size:18px;
+border:none;
+border-radius:10px;
 cursor:pointer;
+background:#2ecc71;
+color:white;
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#27ae60;
+
+}
+
+@media(max-width:768px){
+
+.library{
+
+grid-template-columns:1fr;
+
+}
+
+.hud{
+
+flex-direction:column;
+
+}
 
 }
