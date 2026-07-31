@@ -1,16 +1,37 @@
+let clues=0;
+
+function updateProgress(){
+
+document.getElementById("progress").innerHTML=
+
+clues+" / 4 Clues Found";
+
+}
 const inventory=document.getElementById("inventory");
 
 let hasKey=false;
 
 document.getElementById("table").onclick=function(){
 
-message.innerHTML="📄 You found a paper with number <b>9</b>";
+message.innerHTML="📄 You found Note 1.<br><br>Number : <b>9</b>";
+
+clues++;
+
+updateProgress();
+
+}
 
 }
 
 document.getElementById("clock").onclick=function(){
 
-message.innerHTML="🕒 Clock stopped at <b>3:15</b>";
+message.innerHTML="🕒 Clock shows 3:15";
+
+clues++;
+
+updateProgress();
+
+}
 
 }
 
@@ -22,31 +43,52 @@ hasKey=true;
 
 inventory.innerHTML="🔑 Rusty Key";
 
-message.innerHTML="You found a Rusty Key!";
+message.innerHTML="You collected the Rusty Key.";
+
+clues++;
+
+updateProgress();
 
 }
-
 else{
 
-message.innerHTML="Locker is empty.";
+message.innerHTML="Locker Empty.";
 
 }
 
 }
-}
-
 document.getElementById("window").onclick=function(){
 
-message.innerHTML="🪟 Someone wrote RED = 2 on the glass.";
+message.innerHTML="🪟 RED = 2";
+
+clues++;
+
+updateProgress();
 
 }
 
+}
 document.getElementById("door").onclick=function(){
 
-if(hasKey){
+if(clues<4){
 
-message.innerHTML="Door unlocked. Enter the password.";
+message.innerHTML="🚪 You still haven't found every clue.";
 
+return;
+
+}
+
+if(!hasKey){
+
+message.innerHTML="Need Rusty Key.";
+
+return;
+
+}
+
+message.innerHTML="Door Ready To Unlock.";
+
+}
 }
 
 else{
@@ -62,12 +104,41 @@ document.getElementById("unlockBtn").onclick=function(){
 
 const password=document.getElementById("answer").value;
 
-if(!hasKey){
+if(clues<4){
 
-alert("You need the Rusty Key first!");
+alert("Find all clues first!");
 
 return;
 
+}
+
+if(!hasKey){
+
+alert("Need Rusty Key!");
+
+return;
+
+}
+
+if(password==="9281"){
+
+alert("🎉 ROOM COMPLETED");
+
+window.location="room2.html";
+
+}
+
+else{
+
+score-=20;
+
+updateScore();
+
+alert("Wrong Password!");
+
+}
+
+}
 }
 
 if(password==="9281"){
@@ -220,3 +291,4 @@ alert("Wrong Password!");
 }
 
 updateScore();
+updateProgress();
