@@ -1,0 +1,363 @@
+/* ==========================
+   ESCAPE ROOM - STYLE.CSS
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop")
+    no-repeat center center/cover;
+
+    min-height:100vh;
+
+    color:white;
+
+}
+
+.overlay{
+
+    width:100%;
+    min-height:100vh;
+
+    background:rgba(0,0,0,0.75);
+
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+nav{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 80px;
+
+}
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#ffcc00;
+
+    font-family:'Cinzel',serif;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin-left:30px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:18px;
+
+    transition:0.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#ffcc00;
+
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    min-height:70vh;
+
+    padding:20px;
+
+}
+
+.hero h3{
+
+    letter-spacing:5px;
+
+    color:#cccccc;
+
+    margin-bottom:10px;
+
+}
+
+.hero h1{
+
+    font-size:70px;
+
+    font-family:'Cinzel',serif;
+
+    color:#ffffff;
+
+    text-shadow:0 0 20px red;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+.hero p{
+
+    width:70%;
+
+    margin-top:25px;
+
+    font-size:20px;
+
+    line-height:35px;
+
+    color:#dddddd;
+
+}
+
+.buttons{
+
+    margin-top:40px;
+
+}
+
+button{
+
+    padding:15px 35px;
+
+    margin:10px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+#startBtn{
+
+    background:#e60000;
+
+    color:white;
+
+}
+
+#startBtn:hover{
+
+    background:#ff0000;
+
+    transform:scale(1.08);
+
+}
+
+#aboutBtn{
+
+    background:#ffffff;
+
+    color:black;
+
+}
+
+#aboutBtn:hover{
+
+    background:#ffcc00;
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================
+   FEATURES
+========================== */
+
+.features{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+    padding:60px;
+
+}
+
+.card{
+
+    width:300px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(8px);
+
+    transition:.4s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 20px red;
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+    color:#ffcc00;
+
+}
+
+.card p{
+
+    color:#dddddd;
+
+    line-height:28px;
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#bbbbbb;
+
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+@keyframes glow{
+
+    from{
+
+        text-shadow:0 0 10px red;
+
+    }
+
+    to{
+
+        text-shadow:0 0 35px red;
+
+    }
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    nav{
+
+        flex-direction:column;
+
+        padding:20px;
+
+    }
+
+    nav ul{
+
+        margin-top:20px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    nav ul li{
+
+        margin:10px;
+
+    }
+
+    .hero h1{
+
+        font-size:45px;
+
+    }
+
+    .hero p{
+
+        width:95%;
+
+        font-size:18px;
+
+    }
+
+    .features{
+
+        padding:20px;
+
+    }
+
+    .card{
+
+        width:100%;
+
+        max-width:350px;
+
+    }
+
+}
