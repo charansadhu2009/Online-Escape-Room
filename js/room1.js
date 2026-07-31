@@ -122,7 +122,15 @@ return;
 
 if(password==="9281"){
 
+document.getElementById("door").classList.add("door-open");
+
+setTimeout(function(){
+
 alert("🎉 ROOM COMPLETED");
+
+window.location="room2.html";
+
+},1200);
 
 window.location="room2.html";
 
@@ -133,6 +141,14 @@ else{
 score-=20;
 
 updateScore();
+
+document.body.classList.add("shake");
+
+setTimeout(function(){
+
+document.body.classList.remove("shake");
+
+},500);
 
 alert("Wrong Password!");
 
@@ -292,3 +308,56 @@ alert("Wrong Password!");
 
 updateScore();
 updateProgress();
+// Flashlight
+
+const flashlight=document.getElementById("flashlight");
+
+document.addEventListener("mousemove",function(e){
+
+flashlight.style.left=e.clientX+"px";
+
+flashlight.style.top=e.clientY+"px";
+
+});
+
+// Auto Save
+
+window.addEventListener("beforeunload",function(){
+
+localStorage.setItem("room1Completed",hasKey);
+
+localStorage.setItem("score",score);
+
+localStorage.setItem("clues",clues);
+
+});
+
+const savedKey=localStorage.getItem("room1Completed");
+
+if(savedKey==="true"){
+
+hasKey=true;
+
+inventory.innerHTML="🔑 Rusty Key";
+
+}
+
+const savedScore=localStorage.getItem("score");
+
+if(savedScore){
+
+score=parseInt(savedScore);
+
+updateScore();
+
+}
+
+const savedClues=localStorage.getItem("clues");
+
+if(savedClues){
+
+clues=parseInt(savedClues);
+
+updateProgress();
+
+}
