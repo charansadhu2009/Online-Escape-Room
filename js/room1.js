@@ -106,3 +106,15 @@ document.getElementById("hintBtn").onclick = () => {
     }
 
 };
+// =====================
+// Flashlight
+// =====================
+
+const light = document.getElementById("flashlight");
+
+document.addEventListener("mousemove", (e) => {
+
+    light.style.left = (e.clientX - 90) + "px";
+    light.style.top = (e.clientY - 90) + "px";
+
+});
