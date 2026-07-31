@@ -130,8 +130,7 @@ updateScore(500);
 
 alert("🎉 Room 3 Completed!");
 
-window.location.href="leaderboard.html";
-
+window.location.href="winner.html";
 }
 
 else{
