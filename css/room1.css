@@ -232,49 +232,59 @@ return;
 
 }
 
-hints--;
+.gameInfo{
 
-updateScore();
+margin-top:30px;
 
-};
+display:flex;
 
-// ---------------------
-// WRONG PASSWORD
-// ---------------------
+justify-content:space-around;
 
-const oldUnlock=document.getElementById("unlockBtn").onclick;
+align-items:center;
 
-document.getElementById("unlockBtn").onclick=function(){
+flex-wrap:wrap;
 
-const password=document.getElementById("answer").value;
-
-if(!hasKey){
-
-alert("Find the key first!");
-
-return;
+gap:20px;
 
 }
 
-if(password==="9281"){
+.timerBox,
+.scoreBox{
 
-alert("🎉 Room Completed!");
+background:#222;
 
-window.location="room2.html";
+padding:15px 30px;
 
-}
+border-radius:10px;
 
-else{
+font-size:24px;
 
-score-=20;
-
-updateScore();
-
-alert("Wrong Password!");
+color:gold;
 
 }
 
+#hintBtn{
+
+padding:15px 30px;
+
+background:#ff9800;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.3s;
+
 }
 
-updateScore();
+#hintBtn:hover{
+
+background:#ff5722;
+
 }
