@@ -50,6 +50,8 @@ if(password==="8412"){
 
 alert("🎉 Room 2 Completed!");
 
+localStorage.setItem("score",score);
+
 window.location="leaderboard.html";
 
 }
