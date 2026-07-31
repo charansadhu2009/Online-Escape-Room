@@ -288,3 +288,28 @@ transition:.3s;
 background:#ff5722;
 
 }
+.progress{
+
+margin-top:30px;
+
+background:#222;
+
+padding:20px;
+
+border-radius:10px;
+
+}
+
+.progress h2{
+
+color:gold;
+
+margin-bottom:15px;
+
+}
+
+#progress{
+
+font-size:22px;
+
+}
