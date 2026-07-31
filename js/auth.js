@@ -1,74 +1,75 @@
-// Register
+// =============================
+// REGISTER
+// =============================
 
-const registerForm=document.getElementById("registerForm");
+const registerForm = document.getElementById("registerForm");
 
-if(registerForm){
+if (registerForm) {
 
-registerForm.addEventListener("submit",function(e){
+    registerForm.addEventListener("submit", function (e) {
 
-e.preventDefault();
+        e.preventDefault();
 
-const name=document.getElementById("name").value;
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value;
 
-const email=document.getElementById("regEmail").value;
+        if (name === "" || email === "" || password === "") {
+            alert("Please fill all fields!");
+            return;
+        }
 
-const password=document.getElementById("regPassword").value;
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
 
-localStorage.setItem("name",name);
-localStorage.setItem("email",email);
-localStorage.setItem("password",password);
+        alert("Registration Successful!");
 
-alert("Registration Successful!");
+        window.location.href = "login.html";
 
-window.location="login.html";
-
-});
-
-}
-
-// Login
-
-const playerName =
-document.getElementById("playerName").value.trim();
-
-if(playerName===""){
-
-alert("Please enter your name.");
-
-return;
+    });
 
 }
 
-localStorage.setItem("playerName",playerName);
 
-const loginForm=document.getElementById("loginForm");
+// =============================
+// LOGIN
+// =============================
 
-if(loginForm){
+const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit",function(e){
+if (loginForm) {
 
-e.preventDefault();
+    loginForm.addEventListener("submit", function (e) {
 
-const email=document.getElementById("email").value;
+        e.preventDefault();
 
-const password=document.getElementById("password").value;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const playerName = document.getElementById("playerName").value.trim();
 
-const savedEmail=localStorage.getItem("email");
+        if (playerName === "") {
+            alert("Please enter your name.");
+            return;
+        }
 
-const savedPassword=localStorage.getItem("password");
+        const savedEmail = localStorage.getItem("email");
+        const savedPassword = localStorage.getItem("password");
 
-if(email===savedEmail && password===savedPassword){
+        if (email === savedEmail && password === savedPassword) {
 
-alert("Login Successful!");
+            localStorage.setItem("playerName", playerName);
 
-window.location="story.html";
+            alert("Login Successful!");
 
-}else{
+            window.location.href = "story.html";
 
-alert("Invalid Email or Password!");
+        } else {
 
-}
+            alert("Invalid Email or Password!");
 
-});
+        }
+
+    });
 
 }
