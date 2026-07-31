@@ -1,261 +1,110 @@
-let score = 1000;
+// ===============================
+// Escape Room - Room 1
+// Part 3A
+// ===============================
 
-// Load saved score
-const savedScore = localStorage.getItem("score");
+// ---------- Player ----------
+const playerName = localStorage.getItem("playerName") || "Guest";
+document.getElementById("playerDisplay").innerHTML = "👤 " + playerName;
 
-if (savedScore) {
-    score = parseInt(savedScore);
-}
-let keyFound = false;
-
+// ---------- Elements ----------
 const message = document.getElementById("message");
 const inventory = document.getElementById("inventory");
+const scoreText = document.getElementById("score");
+const progress = document.getElementById("progress");
 
-function showMessage(text) {
-    message.innerHTML = text;
-}
+// ---------- Game Variables ----------
+let score = Number(localStorage.getItem("score")) || 1000;
 
-document.getElementById("table").onclick = () => {
-    showMessage("Nothing is under the table.");
-};
+let cluesFound = 0;
 
-document.getElementById("clock").onclick = () => {
-    showMessage("The clock shows 10:15.");
-};
+let keyFound = false;
 
-document.getElementById("window").onclick = () => {
-    showMessage("The window is locked.");
-};
+let paused = false;
 
-document.getElementById("locker").onclick = () => {
+// ---------- Load Score ----------
+scoreText.innerHTML = score;
 
-    if (!keyFound) {
-        keyFound = true;
-        inventory.innerHTML = "Golden Key 🔑";
-        score += 100;
-     localStorage.setItem("score", score);
-        showMessage("You found a Golden Key!");
-    } else {
-        showMessage("Locker is empty.");
-    }
+// ---------- Message Function ----------
+function showMessage(text){
 
-};
-
-document.getElementById("unlockBtn").onclick = () => {
-
-    const answer = document.getElementById("answer").value.trim();
-if (answer === "1015" && keyFound) {
-
-    alert("🎉 Congratulations! Room 1 Completed!");
-
-    window.location.href = "loading.html";
+message.innerHTML = text;
 
 }
 
-    } else if (!keyFound) {
+// ---------- Progress ----------
+function updateProgress(){
 
-        showMessage("You need a key first.");
+progress.innerHTML = cluesFound + " / 4 Clues Found";
 
-    } else {
+}
 
-        showMessage("Wrong password.");
+// ---------- Score ----------
+function updateScore(points){
 
-       score -= 50;
+score += points;
+
+scoreText.innerHTML = score;
+
 localStorage.setItem("score", score);
-document.getElementById("score").innerHTML = score;
-    }
 
-};
-// =====================
-// Countdown Timer
-// =====================
+}
+
+// ---------- Inventory ----------
+function addInventory(item){
+
+inventory.innerHTML = item;
+
+}
+
+// ---------- Welcome ----------
+showMessage("Welcome " + playerName + "! Escape before the timer ends.");
+
+// ===============================
+// TIMER
+// ===============================
 
 let minutes = 15;
 let seconds = 0;
 
 const timer = setInterval(() => {
-    if(paused){
+
+if(paused) return;
+
+if(seconds===0){
+
+if(minutes===0){
+
+clearInterval(timer);
+
+window.location.href="gameover.html";
+
 return;
-}
-
-    if (seconds === 0) {
-        if (minutes === 0) {
-            clearInterval(timer);
-           window.location.href="gameover.html";
-            return;
-        }
-
-        minutes--;
-        seconds = 59;
-    } else {
-        seconds--;
-    }
-
-    let m = minutes.toString().padStart(2, "0");
-    let s = seconds.toString().padStart(2, "0");
-
-    document.getElementById("time").textContent = `${m}:${s}`;
-
-}, 1000);
-
-// =====================
-// Hint System
-// =====================
-
-document.getElementById("hintBtn").onclick = () => {
-
-    if (!keyFound) {
-
-        showMessage("💡 Hint: Search inside the locker.");
-
-    } else {
-
-        showMessage("💡 Hint: The clock shows the password.");
-
-    }
-
-};
-// =====================
-// Flashlight
-// =====================
-
-const light = document.getElementById("flashlight");
-
-document.addEventListener("mousemove", (e) => {
-
-    light.style.left = (e.clientX - 90) + "px";
-    light.style.top = (e.clientY - 90) + "px";
-
-});
-
-// =====================
-// Sounds
-// =====================
-
-const bgMusic = document.getElementById("bgMusic");
-const clickSound = document.getElementById("clickSound");
-const unlockSound = document.getElementById("unlockSound");
-
-// Start background music after first click
-document.body.addEventListener("click", () => {
-    if (bgMusic.paused) {
-        bgMusic.volume = 0.3;
-        bgMusic.play();
-    }
-}, { once: true });
-
-// Play click sound on every object
-document.querySelectorAll(".object").forEach(obj => {
-    obj.addEventListener("click", () => {
-        clickSound.currentTime = 0;
-       if(soundToggle.checked){
-
-clickSound.play();
-
-}
-    });
-});
-
-// Play unlock sound
-document.getElementById("unlockBtn").addEventListener("click", () => {
-    unlockSound.currentTime = 0;
-   if(soundToggle.checked){
-
-unlockSound.play();
-
-}
-});
-let paused=false;
-
-const pauseMenu=document.getElementById("pauseMenu");
-
-const pauseBtn=document.getElementById("pauseBtn");
-
-pauseBtn.onclick=()=>{
-
-paused=!paused;
-
-if(paused){
-
-pauseMenu.style.display="flex";
-
-}else{
-
-pauseMenu.style.display="none";
 
 }
 
-};
+minutes--;
 
-document.getElementById("resumeBtn").onclick=()=>{
+seconds=59;
 
-paused=false;
+}
 
-pauseMenu.style.display="none";
+else{
 
-};
+seconds--;
 
-document.getElementById("restartBtn").onclick=()=>{
+}
 
-location.reload();
+document.getElementById("time").innerHTML=
 
-};
+minutes.toString().padStart(2,"0")
 
-document.getElementById("homeBtn").onclick=()=>{
++
 
-window.location.href="index.html";
+":"
 
-};
-// =====================
-// Settings Menu
-// =====================
++
 
-const settingsBtn = document.getElementById("settingsBtn");
-const settingsMenu = document.getElementById("settingsMenu");
-const closeSettings = document.getElementById("closeSettings");
+seconds.toString().padStart(2,"0");
 
-const musicToggle = document.getElementById("musicToggle");
-const soundToggle = document.getElementById("soundToggle");
-
-// Load saved settings
-musicToggle.checked = localStorage.getItem("music") !== "off";
-soundToggle.checked = localStorage.getItem("sound") !== "off";
-
-// Apply music setting
-bgMusic.muted = !musicToggle.checked;
-
-// Open menu
-settingsBtn.onclick = () => {
-
-settingsMenu.style.display = "block";
-
-};
-
-// Close menu
-closeSettings.onclick = () => {
-
-settingsMenu.style.display = "none";
-
-};
-
-// Music ON/OFF
-musicToggle.onchange = () => {
-
-bgMusic.muted = !musicToggle.checked;
-
-localStorage.setItem(
-"music",
-musicToggle.checked ? "on" : "off"
-);
-
-};
-
-// Sound ON/OFF
-soundToggle.onchange = () => {
-
-localStorage.setItem(
-"sound",
-soundToggle.checked ? "on" : "off"
-);
-
-};
+},1000);
