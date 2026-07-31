@@ -14,54 +14,70 @@
   
 <div id="flashlight"></div>
 
-<div class="room">
+<div class="game-container">
 
-<h1>ROOM 1</h1>
+    <div class="hud">
 
-<div class="objects">
+        <div>⏳ <span id="time">15:00</span></div>
 
-<div class="item" id="table">
-🪑
-<p>Table</p>
+        <div>⭐ <span id="score">1000</span></div>
+
+        <div>🎒 <span id="inventory">Empty</span></div>
+
+    </div>
+
+    <h1>ESCAPE ROOM</h1>
+
+    <div class="escape-room">
+
+        <div class="object table" id="table">
+            TABLE
+        </div>
+
+        <div class="object clock" id="clock">
+            CLOCK
+        </div>
+
+        <div class="object locker" id="locker">
+            LOCKER
+        </div>
+
+        <div class="object window" id="window">
+            WINDOW
+        </div>
+
+        <div class="object door" id="door">
+            DOOR
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div id="message">
+            Search the room for clues.
+        </div>
+
+        <input
+        type="text"
+        id="answer"
+        placeholder="Door Password">
+
+        <button id="unlockBtn">
+
+            Unlock Door
+
+        </button>
+
+        <button id="hintBtn">
+
+            Hint
+
+        </button>
+
+    </div>
+
 </div>
-
-<div class="item" id="clock">
-🕒
-<p>Clock</p>
-</div>
-
-<div class="item" id="locker">
-🗄️
-<p>Locker</p>
-</div>
-
-<div class="item" id="window">
-🪟
-<p>Window</p>
-</div>
-
-<div class="item" id="door">
-🚪
-<p>Door</p>
-</div>
-
-</div>
-
-<div class="passwordBox">
-
-<input
-type="text"
-id="answer"
-placeholder="Enter Door Password">
-
-<button id="unlockBtn">
-
-Unlock Door
-
-</button>
-
-</div>
-
 <div id="message"></div>
 
 <div class="gameInfo">
