@@ -44,12 +44,13 @@ document.getElementById("locker").onclick = () => {
 document.getElementById("unlockBtn").onclick = () => {
 
     const answer = document.getElementById("answer").value.trim();
+if (answer === "1015" && keyFound) {
 
-    if (answer === "1015" && keyFound) {
+    alert("🎉 Congratulations! Room 1 Completed!");
 
-        alert("🎉 Congratulations! Room 1 Completed!");
+    window.location.href = "loading.html";
 
-        window.location.href = "story.html";
+}
 
     } else if (!keyFound) {
 
@@ -59,10 +60,9 @@ document.getElementById("unlockBtn").onclick = () => {
 
         showMessage("Wrong password.");
 
-        score -= 50;
-
-        document.getElementById("score").innerHTML = score;
-
+       score -= 50;
+localStorage.setItem("score", score);
+document.getElementById("score").innerHTML = score;
     }
 
 };
