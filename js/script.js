@@ -24,9 +24,10 @@ if (startBtn) {
             "Find clues, solve puzzles and escape before time runs out!"
         );
 
-        // Future:
-        // window.location.href = "login.html";
+        window.location.href = "login.html";
 
+    });
+}
     });
 }
 
